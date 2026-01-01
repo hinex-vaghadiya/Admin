@@ -1,0 +1,36 @@
+class Admins(AbstractUser):
+    name=models.CharField(max_length=30)
+    username=models.CharField(max_length=40,unique=True)
+    mobile_number=models.IntegerField()
+    email=models.EmailField(max_length=50)
+    password=models.CharField(max_length=100)
+    profile_pic=models.CharField(default=" ",null=False)
+
+{
+  "name": "Alice Smith",
+  "username": "alice123",
+  "email": "alice@example.com",
+  "password": "SecurePass1",
+  "mobile_number": 1234567890,
+  "profile_pic": "https://example.com/images/alice.jpg",
+}
+
+
+{
+    "username": "alice123",
+    "password": "SecurePass1"
+}
+
+
+{
+    "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzY2MzUwNTk4LCJpYXQiOjE3NjYzNTAyOTgsImp0aSI6IjVjZTliZDg5MDYxZjRlMjBhYjJmNTJkMGIzNmUxNTAwIiwidXNlcl9pZCI6IjcifQ._wSdqpSaMUB6f4K7nJCNP44cyVCmEtcLgBNPOA3e1go",
+    "refresh_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc2NjQzNjY5OCwiaWF0IjoxNzY2MzUwMjk4LCJqdGkiOiIxNzY2Y2UxNTE3Mzg0MDIwOTlkMjA0OGI4Y2UwNDllYyIsInVzZXJfaWQiOiI3In0.9Mh9__olJ2C6PGU-SVtGGcU85hv1eAlwafAyApOcrSw"
+}
+
+{
+  "refresh_token": "your_refresh_token_here"
+}
+
+{
+    "profile_pic":"hello"
+}
