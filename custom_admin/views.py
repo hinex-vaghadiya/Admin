@@ -10,7 +10,7 @@ from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.permissions import IsAuthenticated
 # Create your views here.
 
-
+base_url='https://users-1wfh.onrender.com/api/'
 class RegisterView(APIView):
 
     def post(self,request):
@@ -84,9 +84,9 @@ class LogoutView(APIView):
             return Response({"error":f"the error is {e}"},status=status.HTTP_400_BAD_REQUEST)
 
 class Getallusersview(APIView):
-
+    permission_classes=[IsAuthenticated]
     def get(self,request):
-        user_service_url='https://users-1wfh.onrender.com/api/register'
+        user_service_url=base_url+'register'
         response=requests.get(user_service_url)
         filtered_users=[]
         for x in response.json():
@@ -95,15 +95,23 @@ class Getallusersview(APIView):
         return Response(filtered_users,status=status.HTTP_200_OK)
 
 class GetallresellersView(APIView):
-
+    permission_classes=[IsAuthenticated]
     def get(self,request):
-        reseller_service_url="https://users-1wfh.onrender.com/api/register"
+        reseller_service_url=base_url+'register'
         response=requests.get(reseller_service_url)
         filtered_users=[]
         for x in response.json():
             if x.get('role')=='reseller':
                 filtered_users.append(x)
         return Response(filtered_users,status=status.HTTP_200_OK)
+    
+
+class ActivenowView(APIView):
+
+    def get(self,request):
+        return Response({"message":"Activated"},status=status.HTTP_200_OK)
+
+
 
 
 
